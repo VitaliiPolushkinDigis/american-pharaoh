@@ -25,12 +25,14 @@ const Carousel: React.FC<CarouselProps> = ({ sliderRef, onChange, mocks, page })
     {Object.keys(mocks).map((el, i) => {
       return (
         <div
-          key={i}
+          /* key is id of the first element of tee_time group */
+          key={mocks[el][0].id}
           className={`${s['slide-item']} ${i === page ? s.active : ''}`}
           onClick={() => {
             sliderRef.current?.slickGoTo(i);
           }}
         >
+          {console.log(mocks[el])}
           <div className={s.title}>{formatTeeTime(el)}</div>
           <img
             style={{
